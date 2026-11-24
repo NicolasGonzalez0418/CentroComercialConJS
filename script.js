@@ -1,10 +1,120 @@
 // Aqui vamos a crear el arreglo de pisos que a su vez tiene locales y esos locales productos por posiciones
 
-// El arreglo CentroComercial ya no está escrito aquí: se carga desde la base de datos MySQL
-// a través del servidor (server.js). Llega con la misma forma de antes:
-// [ ['Piso1', [ ["Dollarcity", [ ["Espatula", 10000, 5, "Espatula.jpg"], ... ], "Dollarcity.png"], ... ]], ... ]
-const URL_API = "http://localhost:3000/api/centro-comercial";
-let CentroComercial = [];
+const CentroComercial = [
+    ['Piso1', [
+        ["Dollarcity", [
+            ["Espatula", 10000, 5, "Espatula.jpg"],
+            ["Organizador", 15000, 10, "Organizador.jpg"],
+            ["Rallador", 8000, 3, "Rallador.jpg"],
+            ["Simoniz", 12000, 12, "Simoniz.jpg"],
+            ["Tante", 18000, 1, "Tante.jpg"]
+        ], "Dollarcity.png"],
+        ["Donde_Sam", [
+            ["Asus", 2800000, 10, "Asus.jpg"],
+            ["Hp", 1500000, 2, "Hp.jpg"],
+            ["Iphone 18", 1500000, 15, "Iphone_18.jpg"],
+            ["Samsung", 1200000, 20, "Samsung.jpg"],
+            ["Xiaomi", 1000000, 12, "Xiaomi.jpg"]
+        ], "Donde_Sam.png"],
+        ["Drogueria", [
+            ["Acetaminofen", 8000, 200, "Acetaminofen.jpg"],
+            ["Dolex", 5500, 80, "Dolex.jpg"],
+            ["Ibuprofeno", 7000, 50, "Ibuprofeno.jpg"],
+            ["Loratadina", 3800, 30, "Loratadina.jpg"],
+            ["Naproxeno", 2300, 100, "Naproxeno.jpg"]
+        ], "Drogueria.jpg"],
+        ["Fress", [
+            ["Artesanal", 3800, 32, "Artesanal.jpg"],
+            ["Bocatto", 6700, 20, "Bocatto.jpg"],
+            ["Bon Bon Bum", 4200, 15, "Bon_Bon_Bum.jpg"],
+            ["Casero", 2800, 25, "Casero.jpg"],
+            ["Kulfi", 4600, 10, "Kulfi.png"]
+        ], "Fress.png"],
+        ["Pandora", [
+            ["Anillo", 2000000, 80, "Anillo.jpg"],
+            ["Aretes", 800000, 400, "Aretes.jpg"],
+            ["Brazalete", 450000, 25, "Brazalete.jpg"],
+            ["Charm", 180000, 1000, "Charm.png"],
+            ["Collar", 2350000, 400, "Collar.jpg"]
+        ], "Pandora.jpg"]
+    ]],
+
+    ['Piso2', [
+        ["Casa_Shic", [
+            ["Traje azul", 1200000, 30, "Traje_azul.jpg"],
+            ["Traje negro", 1200000, 18, "Traje_negro.jpg"],
+            ["Vestido rosa palido", 1200000, 20, "Vestido_rosa_palido.jpg"],
+            ["Vestido verde", 1200000, 25, "Vestido_verde.jpg"],
+            ["Vestido vinotinto", 1200000, 40, "Vestido_vinotinto.jpg"]
+        ], "Casa_Shic.jpg"],
+        ["Estilo360", [
+            ["Buso", 110000, 60, "Buso.jpg"],
+            ["Camisa", 40000, 80, "Camisa.jpg"],
+            ["Camiseta", 35000, 80, "Camiseta.jpg"],
+            ["Jean", 140000, 32, "Jean.jpg"],
+            ["Pantalon", 110000, 50, "Pantalon.jpg"]
+        ], "Estilo360.jpg"],
+        ["Nike", [
+            ["Air Max", 320000, 160, "Air_Max.jpg"],
+            ["Cosmic", 210000, 80, "Cosmic.jpg"],
+            ["Dunk Low", 110000, 32, "Dunk_Low.jpg"],
+            ["Force", 300000, 100, "Force.jpg"],
+            ["Metcon", 200000, 43, "Metcon.jpg"]
+        ], "Nike.png"],
+        ["Shin", [
+            ["Camiseta", 110000, 60, "Camiseta.jpg"],
+            ["Demon", 40000, 80, "Demon.jpg"],
+            ["Manga", 80000, 800, "Manga.jpg"],
+            ["Nezuko", 180000, 320, "Nezuko.jpg"],
+            ["One Piece", 110000, 20, "One_Piece.jpg"]
+        ], "Shin.png"],
+        ["WORLD", [
+            ["christian louboutin", 12000000, 38, "christian_louboutin.jpg"],
+            ["Gucci hombre", 8000000, 20, "Gucci_hombre.jpg"],
+            ["Gucci mujer", 8000000, 20, "Gucci_mujer.jpg"],
+            ["Valentino hombre", 10000000, 10, "Valentino_hombre.jpg"],
+            ["YSL", 10000000, 19, "YSL.jpg"]
+        ], "WORLD.svg"]
+    ]],
+
+    ['Piso3', [
+        ["GameZone", [
+            ["PlayStation 5", 2800000, 15, "PlayStation_5.jpg"],
+            ["Xbox Series X", 2500000, 12, "Xbox_Series_X.png"],
+            ["Nintendo Switch", 1600000, 20, "Nintendo_Switch.jpg"],
+            ["Control PS5", 320000, 35, "Control_PS5.jpg"],
+            ["Audifonos Gamer", 180000, 40, "Audifonos_Gamer.jpg"]
+        ], "GameZone.jpg"],
+        ["TechWorld", [
+            ["MacBook Air", 5200000, 8, "MacBook_Air.jpg"],
+            ["iPad", 2400000, 15, "iPad.jpg"],
+            ["Apple Watch", 1500000, 18, "Apple_Watch.jpg"],
+            ["Teclado Mecanico", 250000, 30, "Teclado_Mecanico.jpg"],
+            ["Mouse Gamer", 120000, 45, "Mouse_Gamer.jpg"]
+        ], "TechWorld.png"],
+        ["FitLife", [
+            ["Mancuernas", 120000, 40, "Mancuernas.jpg"],
+            ["Barra Olimpica", 350000, 12, "Barra_Olimpica.png"],
+            ["Caminadora", 1800000, 5, "Caminadora.jpg"],
+            ["Bicicleta_Estatica", 950000, 8, "Bicicleta_Estatica.jpg"],
+            ["Colchoneta", 65000, 50, "Colchoneta.jpg"]
+        ], "FitLife.jpg"],
+        ["PetHouse", [
+            ["Comida para Perros", 85000, 60, "Comida_Perros.jpg"],
+            ["Comida para Gatos", 75000, 55, "Comida_Gatos.jpg"],
+            ["Cama para Mascotas", 110000, 25, "Cama_Mascotas.jpg"],
+            ["Correa", 35000, 80, "Correa.jpg"],
+            ["Juguete de Mascotas", 22000, 100, "Juguete_Mascotas.jpg"]
+        ], "PetHouse.png"],
+        ["Coffee_Lab", [
+            ["Cafe Colombiano", 28000, 100, "Cafe_Colombiano.jpg"],
+            ["Maquina de Espresso", 850000, 10, "Maquina_Espresso.jpg"],
+            ["Molinillo de Cafe", 180000, 18, "Molinillo_Cafe.jpg"],
+            ["Termo", 65000, 45, "Termo.jpg"],
+            ["Prensa Francesa", 95000, 25, "Prensa_Francesa.jpg"]
+        ], "Coffee_Lab.jpg"]
+    ]]
+];
 
 let carrito = [];
 let ventasLocales = [];
@@ -18,6 +128,13 @@ let home = document.querySelector(".home");
 let carritoLink = document.getElementById("enlace-carrito");
 let contenedorCarrito = document.getElementById("contenedor-carrito");
 
+for (let i = 0; i < CentroComercial.length; i++) {
+    let locales = CentroComercial[i][1];
+    for (let j = 0; j < locales.length; j++) {
+        let id = (i + 1) * 100 + (j + 1);
+        ventasLocales.push([id, i + 1, j + 1, locales[j][0], 0, 0]);
+    }
+}
 
 Nav_Piso1.addEventListener("click", function() { mostrarPiso(1); });
 Nav_Piso2.addEventListener("click", function() { mostrarPiso(2); });
@@ -26,34 +143,8 @@ totales.addEventListener("click", function() { mostrartotales(); });
 home.addEventListener("click", function() { mostrarPiso(); });
 carritoLink.addEventListener("click", function() { mostrarCarrito(); });
 
-iniciar();
-
-// Trae el arreglo desde la base de datos y después arranca la página igual que antes
-async function iniciar() {
-    try {
-        let respuesta = await fetch(URL_API);
-        if (!respuesta.ok) { throw new Error("Respuesta " + respuesta.status); }
-        CentroComercial = await respuesta.json();
-    } catch (error) {
-        Principal.innerHTML = `<div class="alert alert-danger m-4">
-                                    No se pudieron cargar los datos del centro comercial.
-                                    Verifique que el servidor esté encendido (node server.js).
-                               </div>`;
-        console.error(error);
-        return;
-    }
-
-    for (let i = 0; i < CentroComercial.length; i++) {
-        let locales = CentroComercial[i][1];
-        for (let j = 0; j < locales.length; j++) {
-            let id = (i + 1) * 100 + (j + 1);
-            ventasLocales.push([id, i + 1, j + 1, locales[j][0], 0, 0]);
-        }
-    }
-
-    actualizarNavbar();
-    mostrarPiso();
-}
+actualizarNavbar();
+mostrarPiso();
 
 // Cuando llamo a mostrarPiso el parametro es el piso que quiero mostrar, y en caso de no enviar parametro, muestra todos los pisos
 function mostrarPiso(piso) {

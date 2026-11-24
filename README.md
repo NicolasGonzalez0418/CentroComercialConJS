@@ -45,21 +45,44 @@ El proyecto utiliza el **caché del navegador** como mecanismo para gestionar y 
 
 El proyecto se organiza en diferentes módulos para facilitar el desarrollo y mantenimiento de sus funcionalidades.
 
+## Base de datos
+
+La información del centro comercial (pisos, locales y productos) está en MySQL.
+El servidor `server.js` la consulta y la entrega a la página con la misma forma del
+arreglo `CentroComercial`, así que el resto de la lógica de `script.js` no cambia.
+
+```
+MySQL (bd/centro_comercial.sql)  ->  server.js (Node + Express)  ->  script.js (fetch)
+```
+
+- `bd/centro_comercial.sql`: crea la base `centro_comercial` con las tablas `pisos`, `locales` y `productos` y sus datos.
+- `bd/conexion.js`: clase `Conexion` que se conecta a MySQL y ejecuta las consultas.
+- `server.js`: usa la clase `Conexion` y expone `GET http://localhost:3000/api/centro-comercial`.
+
 ## Ejecución del proyecto
+
+Requisitos: [Node.js](https://nodejs.org) (versión LTS) y MySQL.
 
 1. Clonar el repositorio:
 
    ```bash
    git clone https://github.com/NicolasGonzalez0418/CentroComercialConJS.git
-   ```
-
-2. Ingresar a la carpeta:
-
-   ```bash
    cd CentroComercialConJS
    ```
 
-3. Abrir el archivo principal `index.html` en un navegador web.
+2. Crear la base de datos: abrir `bd/centro_comercial.sql` en MySQL Workbench y ejecutarlo completo (o `mysql -u root -p < bd/centro_comercial.sql`).
+
+3. Si MySQL tiene contraseña, ponerla en `bd/conexion.js` (`password: process.env.DB_PASSWORD || ""`).
+
+4. Instalar dependencias y encender el servidor (dejar la terminal abierta):
+
+   ```bash
+   npm install
+   node server.js
+   ```
+
+5. Abrir `http://localhost:3000` en el navegador.
+   También funciona con Live Server, siempre que `node server.js` esté corriendo.
 
 ## Objetivo del proyecto
 
